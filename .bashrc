@@ -1,11 +1,12 @@
 source ~/.git-prompt.sh
 
-GREEN="\[$(tput setaf 2)\]"
-BLUE="\[$(tput setaf 4)\]"
-RESET="\[$(tput sgr0)\]"
+GREEN="\[\033[01;32m\]"
+BLUE="\[\033[01;34m\]"
+RESET="\[\033[0m\]"
 GIT='$(__git_ps1 " [%s]")'
 PS1="${BLUE}\h${RESET}>\W ${GREEN}${GIT}${RESET}$ "
 
+force_color_prompt=yes
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
