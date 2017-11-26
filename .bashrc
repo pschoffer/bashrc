@@ -1,3 +1,4 @@
+#!/bin/bash
 
 if [ -f ~/.bash_prompt ]; then
     . ~/.bash_prompt
