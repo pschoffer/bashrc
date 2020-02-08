@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PASSWORD_STORE_DIR="/home/pavel/git/secrets"
+export JAVA_HOME="/usr/lib/jvm/jdk1.8.0_121"

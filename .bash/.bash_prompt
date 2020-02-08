@@ -1,0 +1,33 @@
+#!/bin/bash
+source ~/.bash/.git-prompt.sh
+
+RED="\033[0;31m"
+YELLOW="\033[0;33m"
+LIGHT_RED="\033[1;31m"
+GREEN="\033[01;32m"
+BLUE="\033[1;34m"
+NO_COLOR="\033[0m"
+
+function git_color {
+  local git_status="$(git status 2> /dev/null)"
+
+  if [[ ! $git_status =~ "working tree clean" ]]; then
+    echo -e $RED
+  elif [[ $git_status =~ "Your branch is ahead of" ]]; then
+    echo -e $YELLOW
+  elif [[ $git_status =~ "nothing to commit" ]]; then
+    echo -e $GREEN
+  else
+    echo -e $LIGHT_RED
+  fi
+}
+
+GIT_COLOR="$(git_color)"
+GIT='$(__git_ps1 " [%s]")'
+
+PS1="\[${BLUE}\]\u\[${NO_COLOR}\]"
+PS1+="\[\$(git_color)\]${GIT}\[${NO_COLOR}\]"
+PS1+=">\W $ "
+
+force_color_prompt=yes
+
