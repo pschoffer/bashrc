@@ -1,14 +1,10 @@
 #!/bin/bash
 
-if [ -f ~/.bash_prompt ]; then
-    . ~/.bash_prompt
-fi
+includes=(~/.bash/.bash_prompt ~/.bash/.bash_aliases ~/.bash/.bash_env ~/.bash/.pass.bash-completion)
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-if [ -f ~/.bash_env ]; then
-    . ~/.bash_env
-fi
+for include in ${includes[@]}; do
+	if [ -f $include ]; then
+		. $include
+	fi
+done
 
